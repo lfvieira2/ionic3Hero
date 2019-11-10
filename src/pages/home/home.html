@@ -8,17 +8,17 @@
 
 <ion-content padding> 
   <div class="firstDiv" >
-    <button ion-button (click)="goToPage('Valor da mensagem de parametro')">
-      <ion-icon name="heart"></ion-icon>
-      Go to Hello
-    </button>
-
     <button ion-button (click)="goToAboutPage()">
       <ion-icon name="heart"></ion-icon>
       About us
     </button>
 
     <!--
+    <button ion-button (click)="goToPage('Valor da mensagem de parametro')">
+      <ion-icon name="heart"></ion-icon>
+      Go to Hello
+    </button>
+
     <button ion-button (click)="goToAboutPageAsRoot()">
       <ion-icon name="heart"></ion-icon>
       Sobre nós Root
@@ -34,7 +34,7 @@
 
     <h1>Http Products</h1>
     <ion-list>
-      <button ion-item *ngFor="let product of products" (click)="goToSingle(product.id)">
+      <button ion-item *ngFor="let product of products|async" (click)="goToSingle(product.id)">
         {{product.name}}
       </button>
     </ion-list>

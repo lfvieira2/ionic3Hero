@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.get('products').subscribe(data => this.products = data);
+    this.products = this.httpService.get('products');
   }
 
   goToPage(message) {
