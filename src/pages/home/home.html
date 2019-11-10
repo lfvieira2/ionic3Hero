@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div>
+<ion-content padding> 
+  <div class="firstDiv" >
     <button ion-button (click)="goToPage('Valor da mensagem de parametro')">
       <ion-icon name="heart"></ion-icon>
       Go to Hello
@@ -33,10 +33,10 @@
     </p>
 
     <h1>Http Products</h1>
-    <ul>
-      <li *ngFor="let product of products">
+    <ion-list>
+      <button ion-item *ngFor="let product of products" (click)="goToSingle(product.id)">
         {{product.name}}
-      </li>
-    </ul>
+      </button>
+    </ion-list>
   </div>
 </ion-content>

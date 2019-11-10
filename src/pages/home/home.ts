@@ -37,4 +37,10 @@ export class HomePage implements OnInit {
     this.navCtrl.setRoot(AboutPage);
   }
 
+  goToSingle(productId) {
+    this.navCtrl.push(HelloPage, {
+      'productId': productId
+    });
+  }
+
 }

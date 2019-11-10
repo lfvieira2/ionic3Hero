@@ -1,27 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the HelloPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
 
 @IonicPage()
 @Component({
   selector: 'page-hello',
   templateUrl: 'hello.html',
 })
-export class HelloPage {
+export class HelloPage implements OnInit {
+  id;
+  product: any = {
+    'id': '',
+    'name': ''
+  }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    let msg = this.navParams.get('msg');
-    alert(msg);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public httpService: HttpServiceProvider
+  ) {
+    //let id = this.navParams.get('id');
+    this.id = this.navParams.get('productId');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HelloPage');
+  }
+
+  ngOnInit() {
+    this.httpService.get(`products/${this.id}`).subscribe(data => this.product = data);
   }
 
 }
