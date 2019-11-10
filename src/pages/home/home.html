@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,5 +12,23 @@
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
   </p>
 
-  <button ion-button (click)="goToPage()">Ir para Hello</button>
+  <div>
+    <button ion-button (click)="goToPage('Valor da mensagem de parametro')">
+      <ion-icon name="heart"></ion-icon>
+      Go to Hello
+    </button>
+
+    <button ion-button (click)="goToAboutPage()">
+      <ion-icon name="heart"></ion-icon>
+      About us
+    </button>
+
+    <!--
+    <button ion-button (click)="goToAboutPageAsRoot()">
+      <ion-icon name="heart"></ion-icon>
+      Sobre nós Root
+    </button> 
+    -->
+  </div>
+
 </ion-content>

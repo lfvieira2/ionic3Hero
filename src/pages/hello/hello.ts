@@ -16,7 +16,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class HelloPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    alert('Hello World');
+    let msg = this.navParams.get('msg');
+    alert(msg);
   }
 
   ionViewDidLoad() {
