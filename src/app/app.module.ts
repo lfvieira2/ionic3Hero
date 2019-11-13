@@ -10,25 +10,30 @@ import { HomePage } from '../pages/home/home';
 import { HelloPage } from '../pages/hello/hello';
 import { AboutPage } from '../pages/about/about';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
+import { FormsModule } from '@angular/forms';
+import { CreatePage } from '../pages/create/create';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     HelloPage,
-    AboutPage
+    AboutPage,
+    CreatePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     HelloPage,
-    AboutPage
+    AboutPage,
+    CreatePage
   ],
   providers: [
     StatusBar,
