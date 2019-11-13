@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { Observable } from 'rxjs/Observable';
+import { Product } from '../../model/product.model';
 
 @IonicPage()
 @Component({
@@ -10,10 +12,7 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service';
 })
 export class HelloPage implements OnInit {
   id;
-  product: any = {
-    'id': '',
-    'name': ''
-  }
+  product: Observable<Product>;
 
   constructor(
     public navCtrl: NavController,
