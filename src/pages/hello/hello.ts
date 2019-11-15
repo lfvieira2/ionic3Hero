@@ -37,4 +37,8 @@ export class HelloPage implements OnInit {
     this.httpService.put(`products/${this.product.id}`, this.product).subscribe(data => console.log(data));
   }
 
+  deleteProduct() {
+    this.httpService.delete(`products/${this.product.id}`).subscribe(data => console.log(data));
+  }
+
 }

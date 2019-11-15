@@ -26,4 +26,8 @@ export class HttpServiceProvider {
     return this.http.put(`${this.API_URL}/${endpoint}`, data);
   }
 
+  delete(endpoint: string) {
+    return this.http.delete(`${this.API_URL}/${endpoint}`);
+  }
+
 }
