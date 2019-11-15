@@ -7,18 +7,23 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>hello</ion-title>
+    <ion-title>Update Product: {{product.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <!--<ion-list>
-    <button ion-item>
-      Page item
-    </button>
-  </ion-list>-->
-  
-  <h1>{{product?.id}} - {{product?.name}}</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Product name</ion-label>
+      <ion-input type="text" [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button color="primary" (click)="updateProduct()">
+        Update product
+      </button>
+    </ion-item>
+  </ion-list>
 </ion-content>

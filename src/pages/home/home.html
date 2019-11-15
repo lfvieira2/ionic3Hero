@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding> 
-  <div class="firstDiv" >
+<ion-content padding>
+  <div class="firstDiv">
     <button ion-button (click)="goToAboutPage()">
       <ion-icon name="heart"></ion-icon>
       About us
@@ -31,12 +31,7 @@
   </div>
 
   <div>
-    The world is your oyster.
-    <p>
-      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-    </p>
-
-    <h1>Http Products</h1>
+    <ion-title>Http Products</ion-title>
     <ion-list>
       <button ion-item *ngFor="let product of products|async" (click)="goToSingle(product.id)">
         {{product.name}}

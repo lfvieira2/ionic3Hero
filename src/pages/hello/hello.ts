@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
-import { Observable } from 'rxjs/Observable';
 import { Product } from '../../model/product.model';
 
 @IonicPage()
@@ -12,7 +11,10 @@ import { Product } from '../../model/product.model';
 })
 export class HelloPage implements OnInit {
   id;
-  product: Observable<Product>;
+  product: Product = {
+    name: null,
+    id: null
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -28,7 +30,11 @@ export class HelloPage implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.get(`products/${this.id}`).subscribe(data => this.product = data);
+    this.httpService.getById(`products/${this.id}`).subscribe(data => this.product = data);
+  }
+
+  updateProduct() {
+    this.httpService.put(`products/${this.product.id}`, this.product).subscribe(data => console.log(data));
   }
 
 }
