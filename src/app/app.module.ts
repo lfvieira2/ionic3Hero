@@ -12,6 +12,7 @@ import { AboutPage } from '../pages/about/about';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
 import { FormsModule } from '@angular/forms';
 import { CreatePage } from '../pages/create/create';
+import { ToastProvider } from '../providers/toast/toast';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CreatePage } from '../pages/create/create';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HttpServiceProvider
+    HttpServiceProvider,
+    ToastProvider
   ]
 })
 export class AppModule {}

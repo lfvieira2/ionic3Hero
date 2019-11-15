@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { Product } from '../../model/product.model';
+import { ToastProvider } from '../../providers/toast/toast';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -19,7 +21,8 @@ export class HelloPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public httpService: HttpServiceProvider
+    public httpService: HttpServiceProvider,
+    public toastService: ToastProvider
   ) {
     //let id = this.navParams.get('id');
     this.id = this.navParams.get('productId');
@@ -34,11 +37,17 @@ export class HelloPage implements OnInit {
   }
 
   updateProduct() {
-    this.httpService.put(`products/${this.product.id}`, this.product).subscribe(data => console.log(data));
+    this.httpService.put(`products/${this.product.id}`, this.product).subscribe(data => {
+      this.toastService.createToast('Successfully updated product');
+      this.navCtrl.setRoot(HomePage);
+    });
   }
 
   deleteProduct() {
-    this.httpService.delete(`products/${this.product.id}`).subscribe(data => console.log(data));
+    this.httpService.delete(`products/${this.product.id}`).subscribe(data => {
+      this.toastService.createToast('Successfully delete product');
+      this.navCtrl.setRoot(HomePage);
+    });
   }
 
 }
