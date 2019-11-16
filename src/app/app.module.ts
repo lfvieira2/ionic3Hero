@@ -10,7 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { HelloPage } from '../pages/hello/hello';
 import { AboutPage } from '../pages/about/about';
 import { HttpServiceProvider } from '../providers/http-service/http-service';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreatePage } from '../pages/create/create';
 import { ToastProvider } from '../providers/toast/toast';
 
@@ -26,7 +26,8 @@ import { ToastProvider } from '../providers/toast/toast';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    FormsModule
+    //FormsModule
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

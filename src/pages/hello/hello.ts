@@ -5,6 +5,7 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { Product } from '../../model/product.model';
 import { ToastProvider } from '../../providers/toast/toast';
 import { HomePage } from '../home/home';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -13,6 +14,7 @@ import { HomePage } from '../home/home';
 })
 export class HelloPage implements OnInit {
   id;
+  productForm: FormGroup;
   product: Product = {
     name: null,
     id: null
@@ -33,18 +35,27 @@ export class HelloPage implements OnInit {
   }
 
   ngOnInit() {
-    this.httpService.getById(`products/${this.id}`).subscribe(data => this.product = data);
-  }
-
-  updateProduct() {
-    this.httpService.put(`products/${this.product.id}`, this.product).subscribe(data => {
-      this.toastService.createToast('Successfully updated product');
-      this.navCtrl.setRoot(HomePage);
+    this.productForm = new FormGroup({
+      'id': new FormControl(''),
+      'name': new FormControl('')
+    });
+    this.httpService.getById(`products/${this.id}`).subscribe(data => {
+      this.productForm.setValue(data);
     });
   }
 
+  updateProduct() {
+    let product = this.productForm.value;
+
+    this.httpService.put(`products/${product.id}`, product)
+      .subscribe(data => {
+        this.toastService.createToast('Successfully updated product');
+        this.navCtrl.setRoot(HomePage);
+      });
+  }
+
   deleteProduct() {
-    this.httpService.delete(`products/${this.product.id}`).subscribe(data => {
+    this.httpService.delete(`products/${this.productForm.value.id}`).subscribe(data => {
       this.toastService.createToast('Successfully delete product');
       this.navCtrl.setRoot(HomePage);
     });
